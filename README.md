@@ -2,4 +2,4 @@
 
 R.E.P.O Calculator
 
-Install `dearpygui` and run `py main.py`
+Install `dearpygui` and `pywin32` then run `py main.py`

@@ -113,6 +113,9 @@ class Viewport:
         else:
             load_layout()
 
+    def __str__( self ) -> str:
+        return self.title
+
     
     def close( self ) -> None:
         self.run = False
@@ -170,7 +173,7 @@ class Viewport:
 
     def setDestroyCallback( self, callback: Callable ) -> None:
         self.destroy_callback = callback
-        
+
 
     def __createTitleBar( self, flags: int ) -> None:
         nsb = bool(flags & Flags.NO_SCROLLBAR)

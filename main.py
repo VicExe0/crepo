@@ -15,8 +15,8 @@ def update( ) -> None:
     max_value = 0
 
     for i in range(3):
-        min_value += monsters[i] * ORB_VALUE[i][0]
-        max_value += monsters[i] * ORB_VALUE[i][1]
+        min_value += monsters[i] * ORB_VALUE[i][0] * 3
+        max_value += monsters[i] * ORB_VALUE[i][1] * 3
 
     dpg.set_value("money_text", f"Total money: ${total_money}")
     dpg.set_value("monster_text", f"Monsters Tiers: {monsters[0]}, {monsters[1]}, {monsters[2]}")

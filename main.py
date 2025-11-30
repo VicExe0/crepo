@@ -1,4 +1,4 @@
-from consts import MONSTER_LEVELS, EXTRACTION_AMOUNT, MONEY_MULTIPLIERS, ORB_VALUE
+from consts import MONSTER_LEVELS, EXTRACTION_AMOUNT, MONEY_MULTIPLIERS, ORB_VALUE, IDLE_TIME
 from viewport import Viewport, Flags
 
 import dearpygui.dearpygui as dpg
@@ -63,6 +63,7 @@ def update( auto: bool = False ) -> None:
     total_money = round(money * MONEY_MULTIPLIERS[level - 1])
     monsters = MONSTER_LEVELS[level - 1]
     extracts = EXTRACTION_AMOUNT[level - 1]
+    idle_time = IDLE_TIME[level - 1]
 
     min_value = 0
     max_value = 0
@@ -74,6 +75,7 @@ def update( auto: bool = False ) -> None:
     dpg.set_value("money_text", f"Total money: ${total_money}")
     dpg.set_value("monster_text", f"Monsters Tiers: {monsters[0]}, {monsters[1]}, {monsters[2]}")
     dpg.set_value("extract_text", f"Extracts: {extracts} | MEM: {money * extracts}")
+    dpg.set_value("idle_time", f"Idle Time: {idle_time[0]}s - {idle_time[1]}s")
     dpg.set_value("orb_text", f"Total orb value*: ${min_value} - ${max_value}")
 
 def swapView( id: int, setup: bool = False ) -> None:
@@ -147,6 +149,7 @@ def layout() -> None:
     dpg.add_text("Total money: X", tag="money_text")
     dpg.add_text("Monsters Tiers: X, X, X", tag="monster_text")
     dpg.add_text("Extracts: X | MEM: X", tag="extract_text")
+    dpg.add_text("Idle Time: Xs - Xs", tag="idle_time")
     dpg.add_text("Total orb value*: X - X", tag="orb_text")
     
     dpg.add_button(label="Calculate", width=284, callback=lambda: update(False), tag="calc_button")
@@ -168,7 +171,7 @@ def layout() -> None:
     loadData()
 
 def main() -> None:
-    viewport = Viewport("CREPO by VicExe0", ( 300, 305 ), layout, Flags.CENTERED | Flags.DRAG_ONLY_TITLEBAR | Flags.ALWAYS_ON_TOP | Flags.NO_SCROLLBAR)
+    viewport = Viewport("CREPO by VicExe0", ( 300, 335 ), layout, Flags.CENTERED | Flags.DRAG_ONLY_TITLEBAR | Flags.ALWAYS_ON_TOP | Flags.NO_SCROLLBAR)
     viewport.setFont("Poppins-Regular.ttf")
 
     viewport.start(180)

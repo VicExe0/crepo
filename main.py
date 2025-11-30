@@ -22,6 +22,7 @@ VIEWS = [
         "money_text",
         "monster_text",
         "extract_text",
+        "idle_time",
         "orb_text",
         "calc_button"
     ],
@@ -50,6 +51,7 @@ def toggleSaveOnClose() -> None:
     global save_on_close
 
     save_on_close = not save_on_close
+
 
 def update( auto: bool = False ) -> None:
     global level, money
